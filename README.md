@@ -8,7 +8,7 @@ All servers are deployed on Vultr using a mix of Windows Server 2022 and Ubuntu 
 
 Lab Architecture
 
-Server 1: Windows Server 2022 — Domain Controller (example.local)
+Server 1: Windows Server 2022 — Domain Controller (example.local); Hostname: Nifer-ADDC01
 Server 2: Ubuntu 22.04 — Splunk + Shuffle SOAR
 Server 3: Windows Server 2022 — Domain-joined test machine
 Attacker: Simulated login activity targeting Server 3
