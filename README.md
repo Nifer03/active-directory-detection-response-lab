@@ -25,16 +25,42 @@ Workflow
    - A playbook to disable the user in Active Directory (if approved)
 ---
 Manage our Firewall Group
+
 Change SSH source from Anywhere to My IP
+
 Add MS RDP and change source from Anywhere to My IP
+
 Connect via RDP from my desktop to my ADDC01
+
 Open command prompt and type ipconfig and check our IP add
+
 Go on Firewall, click dropdown select AD project. Nobody can connect to my VM except me.
+
 Go to Test Machine server and click View Console, perform ipconfig
+
 After this, go to settings and enable VPC Network so that all my VMs within the same VPC can communicate with each other internally.
+
 Enable VPC for ADDC01 as well
+
 Go to PowerShell and connect to our Splunk server via SSH
+
 Enable VPC for Splunk and configure firewall.
+
 Once I go back to Powershell, I got disconnected after configuring my firewall.
+
 Go to Powershell again and type ip a. Now I have another network interface as matched in NPC
-Ping both my test machine and ADDC, should be Destination Host Unreachable
+
+Ping both my test machine and ADDC, Destination Host Unreachable
+
+I'm gonna find out why I'm getting Host Unreachable. RDP our test machine and ipconfig.
+
+2nd network interface is different from my machine's private IP. Go to Network Settings. CLick Ethernet Instance 02
+
+Double click and select IpV4. Select Use the following IP Address.
+
+Edit IP address and subnet mask based on my server's information in my vltur account.
+
+Now let's ping my splunk server and test machine to see if I'm getting a connection. 
+
+And perfect! They are now talking to each other.
+
