@@ -1,2 +1,25 @@
-# active-directory-detection-response-lab
-Simulates a real-world Active Directory detection and response lab using Splunk, Shuffle SOAR, and Slack. Built on Vultr cloud, this project shows how to detect successful authentications, send alerts, and automate user account actions in a Windows domain environment.
+Active Directory Detection & Response Lab (SOAR Integration)
+
+This project simulates a real-world enterprise detection and response environment using Windows Server and Linux systems hosted on **Vultr Cloud**. The goal is to detect a successful attacker authentication, generate alerts, and automate incident response.
+
+Platform
+
+All servers are deployed on Vultr using a mix of Windows Server 2022 and Ubuntu 22.04 instances.
+
+Lab Architecture
+
+Server 1: Windows Server 2022 — Domain Controller (example.local)
+Server 2: Ubuntu 22.04 — Splunk + Shuffle SOAR
+Server 3: Windows Server 2022 — Domain-joined test machine
+Attacker: Simulated login activity targeting Server 3
+- Alerting: Slack + Email
+- Automation: Shuffle SOAR disables users in Active Directory (via Server 1)
+
+Workflow
+
+1. Attacker performs a successful login to the test server.
+2. Splunk (on Ubuntu) detects the authentication event.
+3. Shuffle triggers:
+   - A Slack alert
+   - An email to the SOC analyst
+   - A playbook to disable the user in Active Directory (if approved)
