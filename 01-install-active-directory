@@ -1,1 +1,15 @@
 This guide walks through the installation and configuration of Active Directory Domain Services on our domain controller (`Nifer-ADDC01`).
+
+RDP to ADDC01 and click Add Roles and Features
+
+Check Active Directory Domain Services
+Once Domain Services is installed, click Promote to Domain Controller the click Add a new forest
+Set **Directory Services Restore Mode (DSRM)** password
+Accept defaults (DNS, NetBIOS, paths)
+Review and install
+The server will reboot after promotion
+
+RDP again to our AD machine and click Active Directory Users and Computers
+Expand forest (nifer.local) and click Users. Create New User profile and its password.
+
+Now that are DC is sert-up. Let's head over to our Windows target machine and join it to our newly created domain called nifer.local and authenticate using Calum Smith's account. 
