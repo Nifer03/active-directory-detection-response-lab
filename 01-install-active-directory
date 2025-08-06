@@ -13,3 +13,5 @@ RDP again to our AD machine and click Active Directory Users and Computers
 Expand forest (nifer.local) and click Users. Create New User profile and its password.
 
 Now that are DC is sert-up. Let's head over to our Windows target machine and join it to our newly created domain called nifer.local and authenticate using Calum Smith's account. 
+
+RDP to our Test Machine. Type This PC, device name should be vultr-guest and click Rename this PC Advanced. I choose to retain the Device name but member of Domain should be 
