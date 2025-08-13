@@ -34,6 +34,9 @@ Slack workspace for alerts
 
 Email account for notifications
 
+**Diagram**
+images/ad-lab-diagram.png
+
 
 1. Attacker performs a successful login to the test server.
 2. Splunk (on Ubuntu) detects the authentication event.
