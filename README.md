@@ -40,6 +40,24 @@ Email account for notifications
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
 </p>
 
+🏗️ Architecture
+This lab integrates multiple components to simulate a SOC environment and automate responses to suspicious logins.
+
+Data Flow:
+
+Active Directory generates authentication logs (e.g., Event ID 4624 for successful logons).
+
+Windows Event Forwarding sends these logs to the Splunk SIEM.
+
+Splunk runs a scheduled search to detect specific conditions (e.g., unexpected RDP logons).
+
+Upon a match, Splunk sends a webhook to the Shuffle SOAR platform.
+
+Shuffle SOAR runs a playbook that queries Active Directory for user details and can optionally disable the account.
+
+Example alert data from Splunk
+
+
 
 
 1. Attacker performs a successful login to the test server.
