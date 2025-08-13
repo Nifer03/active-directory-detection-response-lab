@@ -36,6 +36,9 @@ Email account for notifications
 
 **Diagram**
 
+<p align="center">
+  <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
+</p>
 
 
 
