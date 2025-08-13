@@ -36,7 +36,6 @@ Email account for notifications
 
 **Diagram**
 
-![Architecture Diagram](images/ad-lab-diagram.png)
 
 
 
