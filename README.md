@@ -1,21 +1,31 @@
-Active Directory Detection & Response Lab (SOAR Integration)
+**Active Directory Detection & Response Lab (SOAR Integration)**
 
-This project simulates a real-world enterprise detection and response environment using Windows Server and Linux systems hosted on **Vultr Cloud**. The goal is to detect a successful attacker authentication, generate alerts, and automate incident response.
+**Overview:**
+This lab demonstrates the integration of Active Directory (AD) authentication logs into a SOAR workflow to automate security actions, such as disabling suspicious accounts. It simulates a real-world SOC environment where a SIEM detects specific Windows login events and triggers a SOAR playbook in response. The setup is designed to showcase how SIEM, AD, and SOAR tools can work together for efficient incident detection and automated response.
 
-Platform
+**Lab Sections:**
+1. Requirements
+2. Diagram
+3. Architecture
+4. Workflow
+5. Hands-On Scenarios
+6. Future Enhancements
+7. Skills Practiced
 
-All servers are deployed on Vultr using a mix of Windows Server 2022 and Ubuntu 22.04 instances.
+**Requirements**
+**Cloud & Infrastructure**
+Vultr account (or equivalent cloud provider)
+Windows Server 2022 ISO
+Ubuntu 22.04 ISO
 
-Lab Architecture
+**Software & Tools**
+Splunk (Enterprise trial)
+Shuffle SOAR account
 
-Server 1: Windows Server 2022 — Domain Controller (example.local); Hostname: Nifer-ADDC01
-Server 2: Ubuntu 22.04 — Splunk + Shuffle SOAR
-Server 3: Windows Server 2022 — Domain-joined test machine
-Attacker: Simulated login activity targeting Server 3
-- Alerting: Slack + Email
-- Automation: Shuffle SOAR disables users in Active Directory (via Server 1)
+**Alerting & Communication**
+Slack workspace for alerts
+Email account for notifications
 
-Workflow
 
 1. Attacker performs a successful login to the test server.
 2. Splunk (on Ubuntu) detects the authentication event.
