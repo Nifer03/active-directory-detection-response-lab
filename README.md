@@ -1,9 +1,9 @@
 **Active Directory Detection & Response Lab (SOAR Integration)**
 
-**Overview:**
+📝**Overview:**
 This lab demonstrates the integration of Active Directory (AD) authentication logs into a SOAR workflow to automate security actions, such as disabling suspicious accounts. It simulates a real-world SOC environment where a SIEM detects specific Windows login events and triggers a SOAR playbook in response. The setup is designed to showcase how SIEM, AD, and SOAR tools can work together for efficient incident detection and automated response.
 
-**Lab Sections:**
+📌**Lab Sections:**
 1. Requirements
 2. Diagram
 3. Architecture
@@ -12,7 +12,7 @@ This lab demonstrates the integration of Active Directory (AD) authentication lo
 6. Future Enhancements
 7. Skills Practiced
 
-**Requirements**
+⚙️**Requirements**
 
 **Cloud & Infrastructure**
 
@@ -34,7 +34,7 @@ Slack workspace for alerts
 
 Email account for notifications
 
-**Diagram**
+🖼️**Diagram**
 
 <p align="center">
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
