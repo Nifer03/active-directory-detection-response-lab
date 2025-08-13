@@ -13,17 +13,25 @@ This lab demonstrates the integration of Active Directory (AD) authentication lo
 7. Skills Practiced
 
 **Requirements**
+
 **Cloud & Infrastructure**
+
 Vultr account (or equivalent cloud provider)
+
 Windows Server 2022 ISO
+
 Ubuntu 22.04 ISO
 
 **Software & Tools**
+
 Splunk (Enterprise trial)
+
 Shuffle SOAR account
 
 **Alerting & Communication**
+
 Slack workspace for alerts
+
 Email account for notifications
 
 
