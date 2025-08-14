@@ -40,6 +40,12 @@ Email account for notifications
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
 </p>
 
+Description:
+This diagram illustrates the Active Directory Detection & Response Lab. It shows the flow of authentication events from a Windows test server (IP: 201.147.112.42) to the Splunk SIEM (IP: 45.72.31.163), which detects successful login events (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can then automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
+
+Note: The IP addresses are placeholders and not real.
+
+
 🏗️ Architecture
 This lab integrates multiple components to simulate a SOC environment and automate responses to suspicious logins.
 
