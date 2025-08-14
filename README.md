@@ -191,42 +191,42 @@ Sends a final confirmation alert to Slack once the account has been disabled.
 
 💻 **Hands-On Scenarios**
 
-Incident Response Workflow – Unauthorized Login Containment
+**Incident Response Workflow – Unauthorized Login Containment**
 
-Step 1 – Detection (Splunk Alert)
+**Step 1 – Detection (Splunk Alert)**
 
 Splunk detects a successful Windows logon (Event ID 4624) from the test server.
 
 ![Splunk Alert Screenshot](images/Splunk-alert-1.png)
 
 
-Step 2 – Alert Forwarding (SOAR Webhook)
+**Step 2 – Alert Forwarding (SOAR Webhook)**
 
 Splunk forwards the event to Shuffle SOAR via webhook for automated triage.
 
 ![SOAR Webhook Screenshot](images/webhook-alert.png)
 
 
-Step 3 – Automated Investigation (Playbook Execution)
+**Step 3 – Automated Investigation (Playbook Execution)**
 
 Shuffle queries Active Directory for the affected account and triggers an approval workflow for the SOC analyst.
 
 ![SOAR Playbook Screenshot](images/AD-alert.png)
 
 
-Step 4 – Analyst Decision (Email Approval Workflow)
+**Step 4 – Analyst Decision (Email Approval Workflow)**
 
 SOC analyst receives an email with action links (Approve/Deny) to authorize account disablement.
 
 ![Email Notification Screenshot](images/Would-you-like-to-disable-the-user.png)
 
-Step 5 – Response Notification (Slack Update)
+**Step 5 – Response Notification (Slack Update)**
 
 Slack posts an alert in the SOC channel summarizing the login event, the analyst’s decision, and containment status.
 
 ![Slack Notification Screenshot](images/User-has-been-disabled.png)
 
-Step 6 – Containment Confirmation (Active Directory)
+**Step 6 – Containment Confirmation (Active Directory)**
 
 Active Directory confirms the account has been disabled following analyst approval
 
@@ -241,6 +241,20 @@ Active Directory confirms the account has been disabled following analyst approv
 3. Add geolocation-based anomaly detection to flag logins from unusual or high-risk locations.
 
 4. Automate password reset after account disablement to further secure compromised credentials.
+
+⚔️**Skills Practiced**
+
+1. SIEM alert configuration (Splunk)
+
+2. SOAR automation & playbook design (Shuffle SOAR)
+
+3. Active Directory querying and account management (Windows Server)
+
+4. Incident response workflow creation with analyst approval logic
+
+5. Integration of Slack and email notifications into security workflows
+
+6.Event log analysis (Windows Security Event ID 4624)
 
 
 
