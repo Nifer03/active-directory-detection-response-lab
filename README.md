@@ -41,75 +41,48 @@ Email account for notifications
 </p>
 
 **Description:**
-This diagram illustrates the Active Directory Detection & Response Lab. It shows the flow of authentication events from a Windows test server (IP: 201.147.112.42) to the Splunk SIEM (IP: 45.72.31.163), which detects successful login events (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can then automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
-
-**Note:** The IP addresses are placeholders and not real.
+This diagram illustrates the Active Directory Detection & Response Lab. It shows how authentication events from the Windows test server are sent to Splunk SIEM, which detects suspicious logins (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
 
 🏗️**Architecture**
 
-This lab integrates multiple components to simulate a SOC environment and automate responses to suspicious logins.
+**Components:**
 
-1. Active Directory Domain Controller (Windows Server)- Label as Nifer-ADDC01 IP: 149.23.151.133
+1. Active Directory Domain Controller (Windows Server, IP: 149.23.151.133)
 
-Shows where user accounts live and actions (disable account) happen
+Hosts user accounts and manages authentication.
+
+Receives SOAR commands (e.g., disable user).
 
 2. Windows Test Server (IP: 201.147.112.42)
 
-Domain-joined endpoint
+Domain-joined endpoint generating login events (Event ID 4624, Logon_Type=7).
 
-Generates login events (Event ID 4624, Logon_Type=7)
+3. Splunk SIEM (Ubuntu, IP: 45.72.31.163)
 
-3. Splunk SIEM (Ubuntu) (IP: 45.72.31.163)
+Collects Windows Event Logs via Universal Forwarder.
 
-Collects and analyzes Windows Event Logs 
+Detects suspicious logins using SPL: index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10)
+Source_Network_Address=* Source_Network_Address!='-' Source_Network_Address!=40.* 
+| stats count by _time,ComputerName,Source_Network_Address,user,Logon_Type
 
-Detects suspicious logins (Event ID 4624, Logon_Type 7 & 10) With SPL: index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10) Source_Network_Address=* Source_Network_Address!='-' Source_Network_Address!=40.* |stats count by _time,ComputerName,Source_Network_Address,user,Logon_Type
+4. Shuffle SOAR (Ubuntu)
 
-Shuffle SOAR (Ubuntu)
+Receives webhook alerts from Splunk.
 
-Receives alerts via webhook from Splunk
+Executes playbooks to disable AD users or notify SOC via Slack/email.
 
-Executes playbooks (optiom to disable AD user, notify SOC via Slack/email)
+5. Attacker Machine
 
-Attacker Machine (I RDP via my AD machine using CSmith's account who is under my AD domain)
+Simulates unauthorized login attempts (RDP using CSmith account).
 
-Simulates unauthorized login attempts
+**Data Flow:**
 
-Alerting Channels 
+1. AD generates authentication logs.
 
-Slack and Email notifications to SOC analysts
+2. Logs are forwarded to Splunk SIEM.
 
+3. Splunk runs a scheduled search to detect suspicious logins.
 
+4. Splunk triggers a webhook alert to Shuffle SOAR.
 
-
-
-
-
-
-
-
-
-
-
-
-Data Flow:
-
-Active Directory generates authentication logs (e.g., Event ID 4624 for successful logons).
-
-Windows Event Forwarding sends these logs to the Splunk SIEM.
-
-Splunk runs a scheduled search to detect specific conditions (e.g., unexpected RDP logons).
-
-Upon a match, Splunk sends a webhook to the Shuffle SOAR platform.
-
-Shuffle SOAR runs a playbook that queries Active Directory for user details and can optionally disable the account.
-
-Example alert data from Splunk
-
-1. Attacker performs a successful login to the test server.
-2. Splunk (on Ubuntu) detects the authentication event.
-3. Shuffle triggers:
-   - A Slack alert
-   - An email to the SOC analyst
-   - A playbook to disable the user in Active Directory (if approved)
-
+5. Shuffle SOAR executes the playbook — disables user if approved and notifies the SOC.
