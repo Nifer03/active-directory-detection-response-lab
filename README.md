@@ -7,13 +7,15 @@ This project was built from scratch, integrating SIEM detection with SOAR automa
 
 
 📌**Lab Sections:**
-1. [Requirements](#requirements) 
-2. [Diagram](#diagram) 
-3. [Architecture](#architecture) 
-4. [Setup Instructions](#setup-instructions) 
-5. [Hands-On Scenarios](#hands-on-scenarios)
-6. [Future Enhancements](#future-enhancements) 
-7. [Skills Practiced](#skills-practiced) 
+
+1. [Overview](#📝-overview)
+2. [Requirements](#⚙️-requirements)
+3. [Diagram](#🖼️-diagram)
+4. [Architecture](#🏗️-architecture)
+5. [Setup Instructions](#🧰-setup-instructions)
+6. [Hands-On Scenarios](#💻-hands-on-scenarios)
+7. [Future Enhancements](#🔭-future-enhancements)
+8. [Skills Practiced](#⚔️-skills-practiced)
 
 
 ⚙️**Requirements**
@@ -262,7 +264,7 @@ Active Directory confirms the account has been disabled following analyst approv
 
 5. Integration of Slack and email notifications into security workflows
 
-6.Event log analysis (Windows Security Event ID 4624)
+6. Event log analysis (Windows Security Event ID 4624)
 
 
 
