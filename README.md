@@ -1,7 +1,9 @@
 **Active Directory Detection & Response Lab (SOAR Integration)**
 
 📝**Overview:**
-This lab demonstrates the integration of Active Directory (AD) authentication logs into a SOAR workflow to automate security actions, such as disabling suspicious accounts. It simulates a real-world SOC environment where a SIEM detects specific Windows login events and triggers a SOAR playbook in response. The setup is designed to showcase how SIEM, AD, and SOAR tools can work together for efficient incident detection and automated response.
+This lab demonstrates the design and implementation of an end-to-end incident detection and automated response workflow for Active Directory environments. It simulates a SOC analyst’s role in identifying suspicious authentication activity, triaging the incident, and triggering automated account containment using Splunk, Shuffle SOAR, Slack, and Active Directory.
+
+This project was built from scratch, integrating SIEM detection with SOAR automation in a virtualized enterprise environment.
 
 📌**Lab Sections:**
 1. Requirements
@@ -61,17 +63,15 @@ This diagram illustrates the Active Directory Detection & Response Lab. It shows
 
   Collects Windows Event Logs via Universal Forwarder.
 
-  Detects suspicious logins using SPL: 
+  Detection Rule (SPL): 
 
 index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10)
 Source_Network_Address=* Source_Network_Address!='-' Source_Network_Address!=40.* 
 | stats count by _time,ComputerName,Source_Network_Address,user,Logon_Type
 
-4. Shuffle SOAR (Ubuntu)
-
-Receives webhook alerts from Splunk.
-
-Executes playbooks to disable AD users or notify SOC via Slack/email.
+4. Shuffle SOAR
+   
+Orchestrates the automated response workflow
 
 5. Attacker Machine
 
@@ -79,15 +79,21 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 
 **Data Flow:**
 
-1. AD generates authentication logs.
+Test user performs a login (normal or suspicious)
 
-2. Logs are forwarded to Splunk SIEM.
+Domain Controller logs authentication activity (Event ID 4624)
 
-3. Splunk runs a scheduled search to detect suspicious logins.
+Logs are forwarded to Splunk via Universal Forwarder
 
-4. Splunk triggers a webhook alert to Shuffle SOAR.
+Splunk detects suspicious logins using an SPL rule
 
-5. Shuffle SOAR executes the playbook — disables user if approved and notifies the SOC.
+Detection triggers Shuffle SOAR via webhook
+
+Shuffle sends an analyst notification to Slack and email
+
+Analyst reviews and approves or denies containment
+
+If approved, Shuffle disables the user account in Active Directory
 
 **Note:** The IP addresses are placeholders.
 
@@ -133,11 +139,9 @@ Authenticate using the CSmith account to verify domain membership.
 
 **Enable Remote Desktop for Test User**
 
-Configure Remote Desktop (RDP) access on the Test Machine.
+Configure RDP permissions for test account (CSmith) to simulate lateral movement attempts
 
-Add CSmith to the Remote Desktop Users group or authorized users list.
-
-Test RDP login using the CSmith account to ensure access is working.
+Test RDP login using the test account to ensure access is working.
 
 **3. Splunk SIEM Setup**
 
