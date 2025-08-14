@@ -6,13 +6,13 @@ This lab demonstrates the design and implementation of an end-to-end incident de
 This project was built from scratch, integrating SIEM detection with SOAR automation in a virtualized enterprise environment.
 
 📌**Lab Sections:**
-1. Requirements
-2. Diagram
-3. Architecture
-4. Setup Instructions
-5. Hands-On Scenarios
-6. Future Enhancements
-7. Skills Practiced
+1. [Requirements](#requirements)
+2. [Diagram](diagram)
+3. [Architecture](#architecture)
+4. [Setup Instructions](#setupinstructions)
+5. [Hands-On Scenarios](#handsonscenarios)
+6. [Future Enhancements](#futureenhancements)
+7. [Skills Practiced](#skillspracticed)
 
 ⚙️**Requirements**
 
