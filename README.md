@@ -7,7 +7,7 @@ This lab demonstrates the integration of Active Directory (AD) authentication lo
 1. Requirements
 2. Diagram
 3. Architecture
-4. Workflow
+4. Setup Instructions
 5. Hands-On Scenarios
 6. Future Enhancements
 7. Skills Practiced
@@ -86,3 +86,32 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 4. Splunk triggers a webhook alert to Shuffle SOAR.
 
 5. Shuffle SOAR executes the playbook — disables user if approved and notifies the SOC.
+
+**Note:** The IP addresses are placeholders.
+
+🧰 **Setup Instructions**
+
+**Lab Environment Setup**
+
+Create Vultr Instances. Open a Vultr account and provision three instances with the following specifications:
+
+| Instance              | vCPUs | RAM     | Storage    | OS                           | Purpose                                      |
+| --------------------- | ----- | ------- | ---------- | ---------------------------- | -------------------------------------------- |
+| AD Machine            | 2     | 4096 MB | 80 GB SSD  | Windows Server 2022 Standard | Domain Controller, hosts user accounts       |
+| Test Machine          | 1     | 2048 MB | 55 GB SSD  | Windows Server 2022 Standard | Domain-joined endpoint for login simulations |
+| Splunk + Shuffle SOAR | 4     | 8192 MB | 160 GB SSD | Ubuntu 22.04 x64             | SIEM and SOAR platform                       |
+
+**Configure Networking**
+
+Set up the VPC network to ensure all instances can communicate securely.
+
+Configure firewall rules to allow necessary ports:
+
+RDP for Windows instances (port 3389)
+
+SSH for Ubuntu (port 22)
+
+Splunk web interface (default port 8000)
+
+Shuffle SOAR web interface and API ports 
+
