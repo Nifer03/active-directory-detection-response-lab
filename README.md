@@ -79,19 +79,19 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 
 **Data Flow:**
 
-Test user performs a login (normal or suspicious)
+⬇️ Test user performs a login (normal or suspicious)
 
-Domain Controller logs authentication activity (Event ID 4624)
+⬇️ Domain Controller logs authentication activity (Event ID 4624)
 
-Logs are forwarded to Splunk via Universal Forwarder
+⬇️ Logs are forwarded to Splunk via Universal Forwarder
 
-Splunk detects suspicious logins using an SPL rule
+⬇️ Splunk detects suspicious logins using an SPL rule
 
-Detection triggers Shuffle SOAR via webhook
+⬇️ Detection triggers Shuffle SOAR via webhook
 
-Shuffle sends an analyst notification to Slack and email
+⬇️ Shuffle sends an analyst notification to Slack and email
 
-Analyst reviews and approves or denies containment
+⬇️ Analyst reviews and approves or denies containment
 
 If approved, Shuffle disables the user account in Active Directory
 
@@ -231,6 +231,16 @@ Step 6 – Containment Confirmation (Active Directory)
 Active Directory confirms the account has been disabled following analyst approval
 
 ![AD Disabled Confirmation Screenshot](images/User-Disabled-Confirmation.png)
+
+🔭 **Future Enhancements**
+
+1. Convert epoch timestamp to human-readable format in notifications for faster incident analysis.
+
+2. Include the Source Network Address in Slack alerts to provide immediate context on login origin.
+
+3. Add geolocation-based anomaly detection to flag logins from unusual or high-risk locations.
+
+4. Automate password reset after account disablement to further secure compromised credentials.
 
 
 
