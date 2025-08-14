@@ -187,28 +187,39 @@ Sends a final confirmation alert to Slack once the account has been disabled.
 
 💻 **Hands-On Scenarios**
 
-Scenario: Detect and respond to a suspicious RDP login via Active Directory.
+Incident Response Workflow – Unauthorized Login Containment
 
-Step 1: Splunk Alert
+Step 1 – Detection (Splunk Alert)
 
-Captures a successful login (Event ID 4624) on the Windows test server.
-Step 2: SOAR Webhook Alert
+Splunk detects a successful Windows logon (Event ID 4624) from the test server.
 
-Splunk sends the alert to Shuffle SOAR.
+![Splunk Alert Screenshot](images/splunk-alert-1.png)
 
-Step 3: SOAR Playbook Execution
-   
-Shuffle queries AD for the user account and awaits analyst decision.
 
-Step 4: Email Notification
+Step 2 – Alert Forwarding (SOAR Webhook)
 
-SOC analyst receives an email to approve or reject the action.
+Splunk forwards the event to Shuffle SOAR via webhook for automated triage.
 
-Step 5: Slack Notification
+![SOAR Webhook Screenshot](images/webhook-alert.png)
 
-Slack alert informs SOC of the suspicious login and action taken.
 
-7.	Step 6: AD User Disabled Confirmation
+Step 3 – Automated Investigation (Playbook Execution)
+
+Shuffle queries Active Directory for the affected account and triggers an approval workflow for the SOC analyst.
+
+![SOAR Playbook Screenshot](images/step3_playbook_execution.png)
+
+
+Step 4 – Analyst Decision (Email Approval Workflow)
+SOC analyst receives an email with action links (Approve/Deny) to authorize account disablement.
+
+
+Step 5 – Response Notification (Slack Update)
+Slack posts an alert in the SOC channel summarizing the login event, the analyst’s decision, and containment status.
+
+
+Step 6 – Containment Confirmation (Active Directory)
+Active Directory confirms the account has been disabled following analyst approva
 
 
 
