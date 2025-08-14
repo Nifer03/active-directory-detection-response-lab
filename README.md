@@ -55,7 +55,7 @@ Email account for notifications
 This diagram illustrates the Active Directory Detection & Response Lab. It shows how authentication events from the Windows test server are sent to Splunk SIEM, which detects suspicious logins (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
 
 
-## 🏗️Architecture
+## 🔖Architecture
 
 **Components:**
 
@@ -257,7 +257,7 @@ Active Directory confirms the account has been disabled following analyst approv
 4. Automate password reset after account disablement to further secure compromised credentials.
 
 
-## ⚔️Skills Practiced
+## 🔓Skills Practiced
 
 1. SIEM alert configuration (Splunk)
 
