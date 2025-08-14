@@ -248,7 +248,7 @@ Active Directory confirms the account has been disabled following analyst approv
 
 3. Add geolocation-based anomaly detection to identify impossible travel and high-risk login patterns
    
-4. Automate password reset after account disablement to reduces dwell time and credential reuse risk.
+4. Automate password reset after account disablement to reduce dwell time and credential reuse risk.
 
 
 ## 🔓Skills Practiced
@@ -265,7 +265,7 @@ Active Directory confirms the account has been disabled following analyst approv
 
 6. Applying problem-solving under pressure while maintaining composure.
 
-7. Recognizing when to step back, reset, and return with fresh perspective.
+7. Recognizing when to step back, reset, and return with a fresh perspective.
 
 
 
