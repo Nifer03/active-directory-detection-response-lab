@@ -184,3 +184,31 @@ If approved, queries Active Directory via LDAP to locate the targeted account.
 Disables the account in Active Directory.
 
 Sends a final confirmation alert to Slack once the account has been disabled.
+
+💻 **Hands-On Scenarios**
+
+Scenario: Detect and respond to a suspicious RDP login via Active Directory.
+
+Step 1: Splunk Alert
+
+Captures a successful login (Event ID 4624) on the Windows test server.
+Step 2: SOAR Webhook Alert
+
+Splunk sends the alert to Shuffle SOAR.
+
+Step 3: SOAR Playbook Execution
+   
+Shuffle queries AD for the user account and awaits analyst decision.
+
+Step 4: Email Notification
+
+SOC analyst receives an email to approve or reject the action.
+
+Step 5: Slack Notification
+
+Slack alert informs SOC of the suspicious login and action taken.
+
+7.	Step 6: AD User Disabled Confirmation
+
+
+
