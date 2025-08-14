@@ -40,14 +40,57 @@ Email account for notifications
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
 </p>
 
-Description:
+**Description:**
 This diagram illustrates the Active Directory Detection & Response Lab. It shows the flow of authentication events from a Windows test server (IP: 201.147.112.42) to the Splunk SIEM (IP: 45.72.31.163), which detects successful login events (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can then automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
 
-Note: The IP addresses are placeholders and not real.
+**Note:** The IP addresses are placeholders and not real.
 
+🏗️**Architecture**
 
-🏗️ Architecture
 This lab integrates multiple components to simulate a SOC environment and automate responses to suspicious logins.
+
+1. Active Directory Domain Controller (Windows Server)- Label as Nifer-ADDC01 IP: 149.23.151.133
+
+Shows where user accounts live and actions (disable account) happen
+
+2. Windows Test Server (IP: 201.147.112.42)
+
+Domain-joined endpoint
+
+Generates login events (Event ID 4624, Logon_Type=7)
+
+3. Splunk SIEM (Ubuntu) (IP: 45.72.31.163)
+
+Collects and analyzes Windows Event Logs 
+
+Detects suspicious logins (Event ID 4624, Logon_Type 7 & 10) With SPL: index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10) Source_Network_Address=* Source_Network_Address!='-' Source_Network_Address!=40.* |stats count by _time,ComputerName,Source_Network_Address,user,Logon_Type
+
+Shuffle SOAR (Ubuntu)
+
+Receives alerts via webhook from Splunk
+
+Executes playbooks (optiom to disable AD user, notify SOC via Slack/email)
+
+Attacker Machine (I RDP via my AD machine using CSmith's account who is under my AD domain)
+
+Simulates unauthorized login attempts
+
+Alerting Channels 
+
+Slack and Email notifications to SOC analysts
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Data Flow:
 
@@ -63,53 +106,10 @@ Shuffle SOAR runs a playbook that queries Active Directory for user details and 
 
 Example alert data from Splunk
 
-
-
-
 1. Attacker performs a successful login to the test server.
 2. Splunk (on Ubuntu) detects the authentication event.
 3. Shuffle triggers:
    - A Slack alert
    - An email to the SOC analyst
    - A playbook to disable the user in Active Directory (if approved)
----
-Manage our Firewall Group
-
-Change SSH source from Anywhere to My IP
-
-Add MS RDP and change source from Anywhere to My IP
-
-Connect via RDP from my desktop to my ADDC01
-
-Open command prompt and type ipconfig and check our IP add
-
-Go on Firewall, click dropdown select AD project. Nobody can connect to my VM except me.
-
-Go to Test Machine server and click View Console, perform ipconfig
-
-After this, go to settings and enable VPC Network so that all my VMs within the same VPC can communicate with each other internally.
-
-Enable VPC for ADDC01 as well
-
-Go to PowerShell and connect to our Splunk server via SSH
-
-Enable VPC for Splunk and configure firewall.
-
-Once I go back to Powershell, I got disconnected after configuring my firewall.
-
-Go to Powershell again and type ip a. Now I have another network interface as matched in NPC
-
-Ping both my test machine and ADDC, Destination Host Unreachable
-
-I'm gonna find out why I'm getting Host Unreachable. RDP our test machine and ipconfig.
-
-2nd network interface is different from my machine's private IP. Go to Network Settings. CLick Ethernet Instance 02
-
-Double click and select IpV4. Select Use the following IP Address.
-
-Edit IP address and subnet mask based on my server's information in my vltur account.
-
-Now let's ping my splunk server and test machine to see if I'm getting a connection. 
-
-And perfect! They are now talking to each other.
 
