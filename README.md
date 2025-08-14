@@ -91,7 +91,7 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 
 🧰 **Setup Instructions**
 
-**Lab Environment Setup**
+1. **Lab Environment Setup**
 
 Create Vultr Instances. Open a Vultr account and provision three instances with the following specifications:
 
@@ -115,3 +115,24 @@ Splunk web interface (default port 8000)
 
 Shuffle SOAR web interface and API ports 
 
+**2. Active Directory Setup**
+
+**Configure Domain Controller**
+
+Set up the AD machine as a Domain Controller for the domain nifer.local.
+
+Create a test user account (e.g., CSmith).
+
+**Join Test Machine to Domain**
+
+Add the Windows Test Machine to the nifer.local domain.
+
+Authenticate using the CSmith account to verify domain membership.
+
+**Enable Remote Desktop for Test User**
+
+Configure Remote Desktop (RDP) access on the Test Machine.
+
+Add CSmith to the Remote Desktop Users group or authorized users list.
+
+Test RDP login using the CSmith account to ensure access is working.
