@@ -1,6 +1,6 @@
 Active Directory Detection & Response Lab (SOAR Integration)
 
-## 📝Overview
+## 🎯Overview
 
 
 This lab demonstrates the design and implementation of an end-to-end incident detection and automated response workflow for Active Directory environments. It simulates a SOC analyst’s role in identifying suspicious authentication activity, triaging the incident, and triggering automated account containment using Splunk, Shuffle SOAR, Slack, and Active Directory.
@@ -21,7 +21,7 @@ This project was built from scratch, integrating SIEM detection with SOAR automa
 8. [Skills Practiced](#skills-practiced)
 
 
-## ⛓️Requirements
+## 🔌Requirements
 
 
 **Cloud & Infrastructure**
