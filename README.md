@@ -3,9 +3,7 @@ Active Directory Detection & Response Lab (SOAR Integration)
 ## 🎯Overview
 
 
-This lab demonstrates the design and implementation of an end-to-end incident detection and automated response workflow for Active Directory environments. It simulates a SOC analyst’s role in identifying suspicious authentication activity, triaging the incident, and triggering automated account containment using Splunk, Shuffle SOAR, Slack, and Active Directory.
-
-This project was built from scratch, integrating SIEM detection with SOAR automation in a virtualized enterprise environment.
+This project simulates a real-world SOC environment, integrating Splunk SIEM, Shuffle SOAR, Slack, and Active Directory to detect and automatically respond to suspicious logins. It showcases my ability to design a security architecture, configure SIEM alerts, build automated workflows, and integrate communication channels for rapid incident containment.
 
 
 ## 📌Lab Sections
@@ -59,17 +57,17 @@ This diagram illustrates the Active Directory Detection & Response Lab. It shows
 
 **Components:**
 
-1. Active Directory Domain Controller (Windows Server, IP: 149.23.151.133)
+1. Active Directory Domain Controller 
 
   Hosts user accounts and manages authentication.
 
   Receives SOAR commands (e.g., disable user).
 
-2. Windows Test Server (IP: 201.147.112.42)
+2. Windows Test Server 
 
   Domain-joined endpoint generating login events (Event ID 4624, Logon_Type=7).
 
-3. Splunk SIEM (Ubuntu, IP: 45.72.31.163)
+3. Splunk SIEM (Ubuntu)
 
   Collects Windows Event Logs via Universal Forwarder.
 
@@ -104,8 +102,6 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 ⬇️ Analyst reviews and approves or denies containment
 
 If approved, Shuffle disables the user account in Active Directory
-
-**Note:** The IP addresses are placeholders.
 
 
 ## 🧰Setup Instructions
