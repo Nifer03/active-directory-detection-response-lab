@@ -5,6 +5,7 @@ This lab demonstrates the design and implementation of an end-to-end incident de
 
 This project was built from scratch, integrating SIEM detection with SOAR automation in a virtualized enterprise environment.
 
+
 📌**Lab Sections:**
 1. [Requirements](#requirements) 
 2. [Diagram](#diagram) 
@@ -13,6 +14,7 @@ This project was built from scratch, integrating SIEM detection with SOAR automa
 5. [Hands-On Scenarios](#hands-on-scenarios)
 6. [Future Enhancements](#future-enhancements) 
 7. [Skills Practiced](#skills-practiced) 
+
 
 ⚙️**Requirements**
 
@@ -36,6 +38,7 @@ Slack workspace for alerts
 
 Email account for notifications
 
+
 🖼️**Diagram**
 
 <p align="center">
@@ -44,6 +47,7 @@ Email account for notifications
 
 **Description:**
 This diagram illustrates the Active Directory Detection & Response Lab. It shows how authentication events from the Windows test server are sent to Splunk SIEM, which detects suspicious logins (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
+
 
 🏗️**Architecture**
 
@@ -96,6 +100,7 @@ Simulates unauthorized login attempts (RDP using CSmith account).
 If approved, Shuffle disables the user account in Active Directory
 
 **Note:** The IP addresses are placeholders.
+
 
 🧰 **Setup Instructions**
 
@@ -189,6 +194,7 @@ Disables the account in Active Directory.
 
 Sends a final confirmation alert to Slack once the account has been disabled.
 
+
 💻 **Hands-On Scenarios**
 
 **Incident Response Workflow – Unauthorized Login Containment**
@@ -232,6 +238,7 @@ Active Directory confirms the account has been disabled following analyst approv
 
 ![AD Disabled Confirmation Screenshot](images/User-Disabled-Confirmation.png)
 
+
 🔭 **Future Enhancements**
 
 1. Convert epoch timestamp to human-readable format in notifications for faster incident analysis.
@@ -241,6 +248,7 @@ Active Directory confirms the account has been disabled following analyst approv
 3. Add geolocation-based anomaly detection to flag logins from unusual or high-risk locations.
 
 4. Automate password reset after account disablement to further secure compromised credentials.
+
 
 ⚔️**Skills Practiced**
 
