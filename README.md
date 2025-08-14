@@ -193,7 +193,7 @@ Step 1 – Detection (Splunk Alert)
 
 Splunk detects a successful Windows logon (Event ID 4624) from the test server.
 
-![Splunk Alert Screenshot](images/splunk-alert-1.png)
+![Splunk Alert Screenshot](images/Splunk-alert-1.png)
 
 
 Step 2 – Alert Forwarding (SOAR Webhook)
@@ -207,19 +207,26 @@ Step 3 – Automated Investigation (Playbook Execution)
 
 Shuffle queries Active Directory for the affected account and triggers an approval workflow for the SOC analyst.
 
-![SOAR Playbook Screenshot](images/step3_playbook_execution.png)
+![SOAR Playbook Screenshot](images/AD-alert.png)
 
 
 Step 4 – Analyst Decision (Email Approval Workflow)
+
 SOC analyst receives an email with action links (Approve/Deny) to authorize account disablement.
 
+![Email Notification Screenshot](images/Would-you-like-to-disable-the-user.png)
 
 Step 5 – Response Notification (Slack Update)
+
 Slack posts an alert in the SOC channel summarizing the login event, the analyst’s decision, and containment status.
 
+![Slack Notification Screenshot](images/User-has-been-disabled.png)
 
 Step 6 – Containment Confirmation (Active Directory)
-Active Directory confirms the account has been disabled following analyst approva
+
+Active Directory confirms the account has been disabled following analyst approval
+
+![AD Disabled Confirmation Screenshot](images/User-Disabled-Confirmation.png)
 
 
 
