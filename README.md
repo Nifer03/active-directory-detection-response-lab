@@ -2,12 +2,10 @@ Active Directory Detection & Response Lab (SOAR Integration)
 
 ## 🎯Overview
 
-
 This project simulates a real-world SOC environment, integrating Splunk SIEM, Shuffle SOAR, Slack, and Active Directory to detect and automatically respond to suspicious logins. It showcases my ability to design a security architecture, configure SIEM alerts, build automated workflows, and integrate communication channels for rapid incident containment.
 
 
 ## 📌Lab Sections
-
 
 1. [Overview](#overview)
 2. [Requirements](#requirements)
@@ -244,28 +242,30 @@ Active Directory confirms the account has been disabled following analyst approv
 
 ## 🔭Future Enhancements
 
-1. Convert epoch timestamp to human-readable format in notifications for faster incident analysis.
+1. Convert epoch timestamp to human-readable format in notifications to improve analyst triage speed.
 
 2. Include the Source Network Address in Slack alerts to provide immediate context on login origin.
 
-3. Add geolocation-based anomaly detection to flag logins from unusual or high-risk locations.
-
-4. Automate password reset after account disablement to further secure compromised credentials.
+3. Add geolocation-based anomaly detection to identify impossible travel and high-risk login patterns
+   
+4. Automate password reset after account disablement to reduces dwell time and credential reuse risk.
 
 
 ## 🔓Skills Practiced
 
-1. SIEM alert configuration (Splunk)
+1. SIEM & Log Analysis – Splunk alert creation, Event ID correlation, real-time Slack alerting via webhooks
 
-2. SOAR automation & playbook design (Shuffle SOAR)
+2. SOAR Automation – Shuffle SOAR playbook design, LDAP integration.
 
-3. Active Directory querying and account management (Windows Server)
+3. Incident Response – Analyst approval workflows, containment logic.
 
-4. Incident response workflow creation with analyst approval logic
+4. Systems Administration – Active Directory user management, Windows Server configuration.
 
-5. Integration of Slack and email notifications into security workflows
+5. Researching solutions and troubleshooting technical roadblocks.
 
-6. Event log analysis (Windows Security Event ID 4624)
+6. Applying problem-solving under pressure while maintaining composure.
+
+7. Recognizing when to step back, reset, and return with fresh perspective.
 
 
 
