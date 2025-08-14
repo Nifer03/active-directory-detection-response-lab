@@ -1,12 +1,12 @@
 Active Directory Detection & Response Lab (SOAR Integration)
 
-📝Overview
+## 📝Overview
 This lab demonstrates the design and implementation of an end-to-end incident detection and automated response workflow for Active Directory environments. It simulates a SOC analyst’s role in identifying suspicious authentication activity, triaging the incident, and triggering automated account containment using Splunk, Shuffle SOAR, Slack, and Active Directory.
 
 This project was built from scratch, integrating SIEM detection with SOAR automation in a virtualized enterprise environment.
 
 
-📌Lab Sections
+## 📌Lab Sections
 
 1. [Overview](#overview)
 2. [Requirements](#requirements)
@@ -18,7 +18,7 @@ This project was built from scratch, integrating SIEM detection with SOAR automa
 8. [Skills Practiced](#skills-practiced)
 
 
-⚙️Requirements
+## ⚙️Requirements
 
 **Cloud & Infrastructure**
 
@@ -41,7 +41,7 @@ Slack workspace for alerts
 Email account for notifications
 
 
-🖼️Diagram
+## 🖼️Diagram
 
 <p align="center">
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
@@ -51,7 +51,7 @@ Email account for notifications
 This diagram illustrates the Active Directory Detection & Response Lab. It shows how authentication events from the Windows test server are sent to Splunk SIEM, which detects suspicious logins (Event ID 4624, Logon_Type=7) and triggers Shuffle SOAR playbooks. Depending on the analyst’s decision, SOAR can automate actions in Active Directory (e.g., disabling a user) and notify the SOC via Slack or email.
 
 
-🏗️Architecture
+## 🏗️Architecture
 
 **Components:**
 
@@ -104,7 +104,7 @@ If approved, Shuffle disables the user account in Active Directory
 **Note:** The IP addresses are placeholders.
 
 
-🧰Setup Instructions
+## 🧰Setup Instructions
 
 1. **Lab Environment Setup**
 
@@ -197,7 +197,7 @@ Disables the account in Active Directory.
 Sends a final confirmation alert to Slack once the account has been disabled.
 
 
-💻Hands-On Scenarios
+## 💻Hands-On Scenarios
 
 
 Incident Response Workflow – Unauthorized Login Containment
@@ -242,7 +242,7 @@ Active Directory confirms the account has been disabled following analyst approv
 ![AD Disabled Confirmation Screenshot](images/User-Disabled-Confirmation.png)
 
 
-🔭Future Enhancements
+## 🔭Future Enhancements
 
 1. Convert epoch timestamp to human-readable format in notifications for faster incident analysis.
 
@@ -253,7 +253,7 @@ Active Directory confirms the account has been disabled following analyst approv
 4. Automate password reset after account disablement to further secure compromised credentials.
 
 
-⚔️Skills Practiced
+## ⚔️Skills Practiced
 
 1. SIEM alert configuration (Splunk)
 
