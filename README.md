@@ -49,19 +49,21 @@ This diagram illustrates the Active Directory Detection & Response Lab. It shows
 
 1. Active Directory Domain Controller (Windows Server, IP: 149.23.151.133)
 
-Hosts user accounts and manages authentication.
+  Hosts user accounts and manages authentication.
 
-Receives SOAR commands (e.g., disable user).
+  Receives SOAR commands (e.g., disable user).
 
 2. Windows Test Server (IP: 201.147.112.42)
 
-Domain-joined endpoint generating login events (Event ID 4624, Logon_Type=7).
+  Domain-joined endpoint generating login events (Event ID 4624, Logon_Type=7).
 
 3. Splunk SIEM (Ubuntu, IP: 45.72.31.163)
 
-Collects Windows Event Logs via Universal Forwarder.
+  Collects Windows Event Logs via Universal Forwarder.
 
-Detects suspicious logins using SPL: index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10)
+  Detects suspicious logins using SPL: 
+
+index="nifer-ad" EventCode=4624 (Logon_Type=7 OR Logon_Type=10)
 Source_Network_Address=* Source_Network_Address!='-' Source_Network_Address!=40.* 
 | stats count by _time,ComputerName,Source_Network_Address,user,Logon_Type
 
@@ -136,3 +138,49 @@ Configure Remote Desktop (RDP) access on the Test Machine.
 Add CSmith to the Remote Desktop Users group or authorized users list.
 
 Test RDP login using the CSmith account to ensure access is working.
+
+**3. Splunk SIEM Setup**
+
+**Install Splunk Enterprise**
+
+Install and configure Splunk Enterprise on the Ubuntu server.
+
+**Forward Windows Logs**
+
+Install the Splunk Universal Forwarder on both the Windows Test Server and the AD Domain Controller.
+
+Configure them to forward security/event logs to the Splunk instance.
+
+**Create Splunk Alert** 
+
+Set up a scheduled search to detect suspicious logins:
+
+Event ID: 4624
+
+Logon_Type: 7 (remote interactive) or 10 (remote desktop/console)
+
+Configure the alert to trigger when matching events occur.
+
+**4. Shuffle SOAR & Slack Integration**
+
+Create accounts for Shuffle SOAR and Slack.
+
+Connect Splunk’s webhook to Shuffle SOAR to trigger automation workflows.
+
+In Slack, create a workspace and channel (e.g., #alerts), and retrieve the Channel ID.
+
+Authenticate the Shuffle SOAR Bot with Slack.
+
+Build a workflow that:
+
+Detects Event ID 4624 (Logon_Type 7/10) from Splunk alerts.
+
+Sends a Slack alert for suspicious login activity.
+
+Sends an email to the analyst with an approval link to authorize or deny account disablement.
+
+If approved, queries Active Directory via LDAP to locate the targeted account.
+
+Disables the account in Active Directory.
+
+Sends a final confirmation alert to Slack once the account has been disabled.
