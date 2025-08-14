@@ -18,7 +18,7 @@ This project was built from scratch, integrating SIEM detection with SOAR automa
 8. [Skills Practiced](#skills-practiced)
 
 
-## ⚙️Requirements
+## ⛓️Requirements
 
 **Cloud & Infrastructure**
 
@@ -41,7 +41,7 @@ Slack workspace for alerts
 Email account for notifications
 
 
-## 🖼️Diagram
+## 📋Diagram
 
 <p align="center">
   <img src="images/ad-lab-diagram.png" alt="Active Directory SOAR Lab Diagram" width="600">
